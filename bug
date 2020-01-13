@@ -1,0 +1,50 @@
+
+            <table id="list" lay-filter="list"></table>
+        
+            var data = [
+                { f0: '油气田', f1: '大庆油田', f2: '大庆油田', f3: '6', f4: '12', f5: '2234568', f6: '126345', f7: '6.1', f8: '5.8', f9: '6.3', f10: '7' },
+                { f0: '油气田', f1: '大庆油田', f2: '大庆石油管理局', f3: '7', f4: '15', f5: '3234568', f6: '186325', f7: '5.9', f8: '6.2', f9: '6.5', f10: '8' },
+                { f0: '油气田', f1: '西南油田', f2: '西南油田', f3: '7', f4: '15', f5: '3234568', f6: '186325', f7: '5.9', f8: '6.2', f9: '6.5', f10: '8' },
+                { f0: '油气田', f1: '西南油田', f2: '四川石油管理局', f3: '7', f4: '15', f5: '3234568', f6: '186325', f7: '5.9', f8: '6.2', f9: '6.5', f10: '8' }
+            ];
+            //定义初始化表格函数
+            function initTable() {
+                //第一个实例
+                table.render({
+                    elem: '#list',
+                    height: 'full-108',
+                    page: true, //开启分页
+                    data: data,
+                    cols: [
+                      [
+                          //{ type: 'checkbox', fixed: 'left' },
+                          //{ type: 'numbers', title: '序号', width: 60 },
+                          { field: 'f0', title: '板块', align: 'center', rowspan: 2, merge: true },
+                          { field: 'f1', title: '合并管理单位', align: 'center', rowspan: 2, merge: true },
+                          { type: 'numbers', title: '序号', width: 60, rowspan: 2 },
+                          { field: 'f2', title: '管理单位', align: 'center', rowspan: 2 },
+                          { title: '应上报股权投资收益预算公司', align: 'center', colspan: 5 },
+                          { title: '我方投资收益率(%)', align: 'center', colspan: 3 }
+                      ],
+                      [
+                          { field: 'f3', title: '控参股公司', align: 'center', merge: false },
+                          { field: 'f4', title: '公司个数', align: 'center', merge: false },
+                          { field: 'f5', title: '投资成本(万元)', align: 'center' },
+                          { field: 'f6', title: '投资收益(万元)', align: 'center' },
+                          { field: 'f7', title: '投资收益率(%)', align: 'center' },
+                          { field: 'f8', title: '2017实际', align: 'center' },
+                          { field: 'f9', title: '2018实际', align: 'center' },
+                          { field: 'f10', title: '2019实际', align: 'center' }
+                      ]
+                    ], done: function () {
+                        tableMerge.render(this)
+                    }
+                });
+            };
+
+            initTable();
+            
+            我只想合并字段f0和f1，但实际运行效果是f3和f4也合并了，希望修复一下复合表头下的bug
+            
+            图片没法放，自己跑一下吧
+            
